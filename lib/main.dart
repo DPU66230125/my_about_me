@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_about_me/config.dart';
 import 'package:my_about_me/homePage.dart';
 import 'package:my_about_me/profilePage.dart';
 
@@ -35,7 +36,10 @@ class MyApp extends StatelessWidget {
       ),
       home: const MyHomePage(title: 'My About Me'),
       routes: <String, WidgetBuilder>{
-        'profile': (BuildContext context) => const Profile()
+        'profile': (BuildContext context) => Profile(
+              title: 'โปรไฟล์',
+              data: Config.profileData,
+            )
       },
     );
   }
@@ -82,12 +86,12 @@ class _MyHomePageState extends State<MyHomePage> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return Scaffold(
-      body: FutureBuilder<bool>(
-        builder: (context, snapshot){
-          return const HomePage();
-        }, 
-        future: null,
-      ) // This trailing comma makes auto-formatting nicer for build methods.
-    );
+        body: FutureBuilder<bool>(
+      builder: (context, snapshot) {
+        return const HomePage();
+      },
+      future: null,
+    ) // This trailing comma makes auto-formatting nicer for build methods.
+        );
   }
 }
