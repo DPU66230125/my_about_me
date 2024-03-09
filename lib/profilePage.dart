@@ -24,11 +24,14 @@ class Profile extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
                 const SizedBox(height: 16.0),
-                Image(
-                    image: AssetImage(
-                        'assets/images/${data["pic"] ?? 'user.png'}'),
-                    width: 100.0,
-                    height: 100.0),
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(100.0),
+                  child: Image(
+                      image: AssetImage(
+                          'assets/images/${data["pic"] ?? 'user.png'}'),
+                      width: 100.0,
+                      height: 100.0),
+                ),
                 const SizedBox(height: 8.0),
                 Text(
                   data["name"] ?? 'N/A',
