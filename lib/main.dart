@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:my_about_me/blog.dart';
 import 'package:my_about_me/config.dart';
 import 'package:my_about_me/homePage.dart';
+import 'package:my_about_me/login.dart';
+import 'package:my_about_me/myAge.dart';
+import 'package:my_about_me/myMap.dart';
+import 'package:my_about_me/product_list.dart';
 import 'package:my_about_me/profilePage.dart';
+import 'package:my_about_me/videoPresentation.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
   runApp(const MyApp());
@@ -39,7 +46,12 @@ class MyApp extends StatelessWidget {
         'profile': (BuildContext context) => Profile(
               title: 'โปรไฟล์',
               data: Config.profileData,
-            )
+            ),
+        'video_presentation': (BuildContext context) => const VideoPresentation(),
+        'my_map': (BuildContext context) => const MyMap(),
+        'my_age':(BuildContext context) => const MyAge(),
+        'blog': (BuildContext context) => const Blog(),
+        'product': (BuildContext context) => const ProductList()
       },
     );
   }
@@ -64,16 +76,19 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+  late int userId = 0;
 
-  void _incrementCounter() {
+  @override
+  void initState(){
+    super.initState();
+    checkLogin();
+  }
+
+  Future<void> checkLogin() async{
+    final SharedPreferences pref = await SharedPreferences.getInstance();
+    final int userId = pref.getInt("userAuth")!;
     setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
+      this.userId = userId;
     });
   }
 
@@ -88,7 +103,11 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
         body: FutureBuilder<bool>(
       builder: (context, snapshot) {
-        return const HomePage();
+        if(userId >= 1){
+          return const HomePage();
+        }else{
+          return const Login();
+        }
       },
       future: null,
     ) // This trailing comma makes auto-formatting nicer for build methods.
