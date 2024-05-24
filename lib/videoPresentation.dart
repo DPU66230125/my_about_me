@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_about_me/config.dart';
 import 'package:video_url_validator/video_url_validator.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
@@ -12,7 +13,7 @@ class VideoPresentation extends StatefulWidget {
 class _VideoPresentationState extends State<VideoPresentation> {
   late YoutubePlayerController controller;
   var validator = VideoURLValidator();
-  late String youtubePath = "https://www.youtube.com/watch?v=es7XtrloDIQ";
+  late String youtubePath = Config.profileData['youtubePath'];
   late bool validateStatus =
       validator.validateYouTubeVideoURL(url: youtubePath);
 

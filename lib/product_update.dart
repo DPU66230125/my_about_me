@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:my_about_me/config.dart';
 
 class ProductUpdate extends StatefulWidget {
   const ProductUpdate({super.key, required this.productId});
@@ -12,7 +13,7 @@ class ProductUpdate extends StatefulWidget {
 
 class _ProductUpdateState extends State<ProductUpdate> {
   final dio = Dio();
-  final baseApi = "https://testpos.trainingzenter.com/lab_dpu/product/update/";
+  final baseApi = "${Config.profileData['productAPI']}/update/";
 
   Future<void> getSingleProduct() async{
     try {

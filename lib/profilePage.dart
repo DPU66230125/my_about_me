@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:my_about_me/config.dart';
 
 class Profile extends StatelessWidget {
   String title;
   Map<String, dynamic> data;
-  String? dataStr;
-  Profile({super.key, required this.title, required this.data}) {
-    dataStr = data.toString();
-  }
+  Profile({super.key, required this.title, required this.data});
 
   @override
   Widget build(BuildContext context) {
@@ -26,11 +24,8 @@ class Profile extends StatelessWidget {
                 const SizedBox(height: 16.0),
                 ClipRRect(
                   borderRadius: BorderRadius.circular(100.0),
-                  child: Image(
-                      image: AssetImage(
-                          'assets/images/${data["pic"] ?? 'user.png'}'),
-                      width: 100.0,
-                      height: 100.0),
+                  child: Image.network(Config.profileData['picURL'],
+                      width: 100.0, height: 100.0),
                 ),
                 const SizedBox(height: 8.0),
                 Text(
@@ -64,7 +59,10 @@ class Profile extends StatelessWidget {
                 ),
                 Padding(
                   padding: const EdgeInsets.all(16.0),
-                  child: Text(dataStr ?? ''),
+                  child: Text(
+                    Config.profileData['bio'] ?? '',
+                    textAlign: TextAlign.center,
+                  ),
                 )
               ],
             ),

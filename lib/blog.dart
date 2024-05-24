@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:my_about_me/config.dart';
 
 class Blog extends StatefulWidget {
   const Blog({super.key});
@@ -12,7 +13,7 @@ class Blog extends StatefulWidget {
 
 class _BlogState extends State<Blog> {
   final dio = Dio();
-  final baseApi = "https://tummanoonw-66230125-api.onrender.com/blog";
+  final baseApi = Config.profileData['blogAPI'];
   late List blogList = [];
 
     Future<void>getBlogs() async{

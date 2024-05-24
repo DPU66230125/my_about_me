@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:my_about_me/config.dart';
 
 class MyMap extends StatefulWidget {
   const MyMap({super.key});
@@ -11,7 +12,7 @@ class MyMap extends StatefulWidget {
 class _MyMapState extends State<MyMap> {
   late GoogleMapController mapController;
 
-  final LatLng center = const LatLng(18.3170581, 99.3986862);
+  final LatLng center = Config.profileData["mapLatLng"];
 
   void onMapCreated(GoogleMapController controller){
     mapController = controller;
@@ -29,7 +30,7 @@ class _MyMapState extends State<MyMap> {
           Expanded(
             flex: 2,
             child: Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: const EdgeInsets.all(0.0),
               child: GoogleMap(
                 mapType: MapType.normal,
                 onMapCreated: onMapCreated,

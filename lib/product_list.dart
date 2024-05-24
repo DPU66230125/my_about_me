@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:my_about_me/config.dart';
 import 'package:my_about_me/product_create.dart';
 import 'package:my_about_me/product_detail.dart';
 import 'package:my_about_me/product_update.dart';
@@ -15,9 +16,9 @@ class ProductList extends StatefulWidget {
 class _ProductListState extends State<ProductList> {
   final dio = Dio();
   final baseApi =
-      "https://testpos.trainingzenter.com/lab_dpu/product/list/66230125?format=json";
+      "${Config.profileData['productAPI']}/list/${Config.profileData['productStudentNo']}?format=json";
 
-  final baseApi2 = "https://testpos.trainingzenter.com/lab_dpu/product/update/";
+  final baseApi2 = "${Config.profileData['productAPI']}/update/";
   late List productList = [];
 
   Future<void> getProducts() async {

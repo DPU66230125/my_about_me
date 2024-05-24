@@ -40,10 +40,9 @@ class _LoginState extends State<Login> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Center(
-            child: Column(
+      body: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 const SizedBox(height: 16,),
                 const Padding(
@@ -128,12 +127,10 @@ class _LoginState extends State<Login> {
                       textAlign: TextAlign.center,
                     ),
                   ),
-                )
+                ),
+                const SizedBox(height: 128,)
               ],
             ),
-          ),
-        )
-      ),
     );
   }
 }

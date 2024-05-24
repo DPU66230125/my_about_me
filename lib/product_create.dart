@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:my_about_me/config.dart';
 
 class ProductCreate extends StatefulWidget {
   const ProductCreate({super.key});
@@ -12,7 +13,7 @@ class ProductCreate extends StatefulWidget {
 
 class _ProductCreateState extends State<ProductCreate> {
   final dio = Dio();
-  final baseApi = "https://testpos.trainingzenter.com/lab_dpu/product/create/";
+  final baseApi = "${Config.profileData['productAPI']}/create/";
 
   Future<dynamic> productCreate() async{
     if(projectName.text == '' || projectCover.text == '' || projectDescription.text == '' || projectPrice.text == ''){
